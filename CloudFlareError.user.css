@@ -1,0 +1,66 @@
+/* ==UserStyle==
+@name           CloudFlare Error - HIDE YOUR IP
+@namespace      https://greasyfork.org/en/users/124677-pabli
+@version        1.0.3
+@description    Hides your IP, Ray ID and adds dark mode to the CloudFlare Error Message
+@author         Pabli
+@license        CC-BY-SA-4.0
+@homepageURL    https://github.com/pabli24/CloudFlareError
+@supportURL     https://github.com/pabli24/CloudFlareError/issues
+@preprocessor   stylus
+@var            checkbox hideip "Hide IP" 1
+@var            checkbox darkmode "Dark Mode" 1
+@var            checkbox blank "Blank Page" 0
+==/UserStyle== */
+@-moz-document regexp(".*") {
+if hideip {
+	#cf-wrapper #cf-error-details .cf-error-footer,
+	#cf-wrapper #cf-error-details > header > span {
+		display: none !important
+	}
+}
+if blank {
+	#cf-wrapper #cf-error-details {
+		display: none !important
+	}
+}
+if darkmode {
+	#cf-wrapper #cf-error-details {
+		background: #000 !important
+	}
+	#cf-wrapper {
+		background: #000 !important
+		color: #eee !important
+		position: absolute !important
+		padding: 0 !important
+		margin: 0 !important
+		top: 0 !important
+		left: 0 !important
+		width: 100% !important
+		height: 100% !important
+	}
+	#cf-wrapper #cf-error-details .cf-status-item.cf-error-source:after {
+		border-bottom: 18px solid #000 !important
+	}
+	#cf-wrapper #cf-error-details .cf-error-source::after {
+		background-color: #000 !important
+		box-shadow: none !important
+	}
+	#cf-wrapper #cf-error-details .cf-highlight,
+	#cf-wrapper #cf-error-details .bg-gradient-gray {
+		background: #151515 !important
+	}
+	#cf-wrapper h1,
+	#cf-wrapper h2,
+	#cf-wrapper h3,
+	#cf-wrapper h4,
+	#cf-wrapper h5,
+	#cf-wrapper h6,
+	#cf-wrapper p {
+		color: #ddd !important
+	}
+	#cf-wrapper #cf-error-details .cf-error-footer {
+		border-top: 1px #151515 solid !important
+	}
+}
+}
