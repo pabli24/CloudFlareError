@@ -20,6 +20,8 @@
 
 ![Screenshot](./img/stylus.png)
 
+Webiste for testing: [CloudFlare Error page](https://pabli.dev/CloudFlareError/test), [DDoS Protection page](https://pabli.dev/CloudFlareError/test/ddos)
+
 ## License
 [CC-BY-SA-4.0](https://github.com/pabli24/CloudFlareError/blob/main/LICENSE)
 
