@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>CloudFlare Error - HIDE YOUR IP</h1>
+  <h1>CloudFlare Error - Dark Mode & Hide IP</h1>
   <a href="https://github.com/pabli24/CloudFlareError/raw/main/CloudFlareError.user.css">
     <img src="https://img.shields.io/badge/Install%20directly%20with-Stylus-285959.svg" alt="Install directly with Stylus"></a>
 
