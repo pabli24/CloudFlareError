@@ -1,39 +1,29 @@
 /* ==UserStyle==
 @name           CloudFlare Error - Dark Mode & Hide IP
 @namespace      https://greasyfork.org/en/users/124677-pabli
-@version        1.2.2
+@version        1.3
 @description    Hides your IP, Ray ID, server location and adds dark mode to the CloudFlare Error Message
 @author         Pabli
 @license        CC-BY-SA-4.0
 @homepageURL    https://github.com/pabli24/CloudFlareError
 @supportURL     https://github.com/pabli24/CloudFlareError/issues
 @preprocessor   stylus
-@var            checkbox darkmode "Dark Mode"                  1
-@var            checkbox hideip   "Hide IP and Ray ID"         1
-@var            checkbox hidel    "Hide Server Location"       0
-@var            checkbox blank    "Blank Page"                 0
-@var            color    bgc      "Background color"           #000
-@var            color    bgc2     "Secondary background color" #151515
-@var            color    txtc     "Text color"                 #ddd
-@var            color    txtlc    "Link color"                 #2b99ff
+@var            checkbox darkmode "Dark Mode"                            1
+@var            checkbox hideip   "Hide IP and Ray ID"                   1
+@var            checkbox hidel    "Hide Server Location"                 0
+@var            checkbox hides    "Hide Survey (Was this page helpful?)" 0
+@var            checkbox blank    "Blank Page"                           0
+@var            color    bgc      "Background Color"                     #000
+@var            color    bgc2     "Secondary Background Color"           #151515
+@var            color    txtc     "Text Color"                           #ddd
+@var            color    txtlc    "Link Color"                           #2b99ff
 ==/UserStyle== */
 @-moz-document regexp(".*") {
-if hideip {
-	#cf-wrapper #cf-error-details {
-		.cf-error-footer, > header > span, .heading-ray-id, /.attribution > .ray_id {
-			display: none !important
-		}
-	}
-}
-if hidel {
-	#cf-wrapper .truncate {
-		display: none !important
-	}
-}
-if blank {
-	#cf-wrapper #cf-error-details {
-		display: none !important
-	}
+#cf-wrapper #cf-error-details {
+	if hideip { .cf-error-footer, > header > span, .heading-ray-id, /.attribution > .ray_id { display: none !important } }
+	if hidel  { .truncate                                                                   { display: none !important } }
+	if hides  { #error-feedback-survey, #error-feedback                                     { display: none !important } }
+	if blank                                                                                { display: none !important }
 }
 if darkmode {
 	#cf-wrapper {
@@ -55,7 +45,7 @@ if darkmode {
 				background-color: txtlc
 			}
 		}
-		a {
+		a, .cf-footer-ip-reveal-btn {
 			color: txtlc !important
 			&:hover {
 				text-decoration: underline
