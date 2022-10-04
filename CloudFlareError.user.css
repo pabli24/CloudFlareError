@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           CloudFlare Error - Dark Mode & Hide IP
 @namespace      https://greasyfork.org/en/users/124677-pabli
-@version        1.4
+@version        1.5
 @description    Hides your IP, Ray ID, server location and adds dark mode to the CloudFlare Error Message
 @author         Pabli
 @license        CC-BY-SA-4.0
@@ -17,6 +17,8 @@
 @var            color    bgc2     "Secondary Background Color"           #151515
 @var            color    txtc     "Text Color"                           #ddd
 @var            color    txtlc    "Link Color"                           #2b99ff
+@var            color    txtg     "Green Text Color"                     #9bca3e
+@var            color    txtr     "Red Text Color"                       #bd2426
 ==/UserStyle== */
 @-moz-document regexp(".*") {
 #cf-wrapper #cf-error-details {
@@ -55,9 +57,9 @@ if darkmode {
 		.cf-button {
 			color: txtc
 			background-color: bgc
-			border-color: txtlc
+			border-color: bgc2
 			&:hover {
-				background-color: txtlc
+				background-color: bgc2
 			}
 		}
 		a, .cf-footer-ip-reveal-btn {
@@ -69,6 +71,10 @@ if darkmode {
 		#cf-error-details {
 			^[0], & {
 				background: bgc
+			}
+			.code-label {
+				background-color: bgc2
+				color: txtc
 			}
 			.cf-status-item.cf-error-source:after {
 				border-bottom: 18px solid bgc
@@ -82,6 +88,12 @@ if darkmode {
 			}
 			.cf-error-footer {
 				border-top: 1px rgba(255, 255, 255, .1) solid
+			}
+			.text-green-success {
+				color: txtg
+			}
+			.text-red-error {
+				color: txtr
 			}
 			//One more step Please complete the security check to access example.com
 			.cf-highlight .cf-highlight-inverse {
