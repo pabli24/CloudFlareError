@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           CloudFlare Error - Dark Mode & Hide IP
 @namespace      https://greasyfork.org/en/users/124677-pabli
-@version        1.5
+@version        1.6
 @description    Hides your IP, Ray ID, server location and adds dark mode to the CloudFlare Error Message
 @author         Pabli
 @license        CC-BY-SA-4.0
@@ -21,13 +21,17 @@
 @var            color    txtr     "Red Text Color"                       #bd2426
 ==/UserStyle== */
 @-moz-document regexp(".*") {
-#cf-wrapper #cf-error-details {
-	if hideip {
-		.cf-error-footer, > header > span, 
-		.heading-ray-id, /.attribution > .ray_id, /.footer .ray-id {
-			display: none !important
-		}
+
+if hideip {
+	body[onload*="e=document.getElementById('captcha')"] > div > div[style="font-size:13px;"], //Google unusual traffic error
+	#cf-wrapper #cf-error-details .cf-error-footer,
+	#cf-wrapper #cf-error-details > header > span, 
+	#cf-wrapper #cf-error-details .heading-ray-id, .attribution > .ray_id, .footer .ray-id,
+	#page-error .cf-error-details ul {
+		display: none !important
 	}
+}
+#cf-wrapper #cf-error-details {
 	if hidel {
 		.truncate {
 			display: none !important
